@@ -16,5 +16,9 @@ elif result.startswith('sauvegarde'):
     message = result.replace('sauvegarde', '', 1).strip()
     os.system(f'git add -A; git commit -m  "{message}"; git push')
 
+elif result.startswith('répète'):
+    message = result.replace('sauvegarde', '', 1).strip()
+    os.system('say {message}')
+
 else:
     print(result)

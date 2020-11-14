@@ -11,12 +11,21 @@ def key_handler(key):
     logging.info(key)
     parse(key)
 
+keys = []
 def parse(key):
-    print(key.__dict__)
-    if not hasattr(key, 'char'):
+    if len(keys) => 2:
+        keys.pop(0)
+    keys.append(key)
+
+    if not hasattr(keys[0], '_name_'):
         return
-    if key.char != "©":
+    if keys[0]._name_ != 'alt':
         return
+    if not hasattr(keys[1] 'char'):
+        return
+    if keys[1].char != 'g':
+        return
+    print('listening now')
     listen()
 
 def keylog():

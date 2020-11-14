@@ -27,9 +27,13 @@ def compare(cmd:str, cmds:map):
     return best_cmd
 
 def listen():
-    with mic as source:
-        audio = r.listen(source)
-    cmd = r.recognize_google(audio, language='en')
+    try:
+        with mic as source:
+            audio = r.listen(source)
+        cmd = r.recognize_google(audio, language='en')
+    except:
+        os.system(f"say -v Alex 'Could you repeat please?'")
+        return
     print(cmd)
     with open('commands.yaml') as file:
         content = yaml.full_load(file)
@@ -38,7 +42,7 @@ def listen():
     action = content[cmd]
     if type(action) is str:
         response = action
-    if type(action) is list:
+    elif type(action) is list:
         response = random.choice(action)
     print(f"{response}")
     os.system(f"say -v Alex \"{response}\"")

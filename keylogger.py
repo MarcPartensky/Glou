@@ -13,17 +13,18 @@ def key_handler(key):
 
 keys = []
 def parse(key):
-    if len(keys) => 2:
+    if len(keys) >= 2:
         keys.pop(0)
     keys.append(key)
+    print(key.__dict__)
 
     if not hasattr(keys[0], '_name_'):
         return
     if keys[0]._name_ != 'alt':
         return
-    if not hasattr(keys[1] 'char'):
+    if not hasattr(keys[1], 'char'):
         return
-    if keys[1].char != 'g':
+    if keys[1].char != '©':
         return
     print('listening now')
     listen()

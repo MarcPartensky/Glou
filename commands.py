@@ -1,21 +1,26 @@
 #!/usr/bin/env python
 
+from dotenv import load_dotenv
 from dandelion import DataTXT
 from recorder import record
+
+import speech_recognition as sr
 import random
 import yaml
 import os
 
-import speech_recognition as sr
+load_dotenv()
+
 r = sr.Recognizer()
 mic = sr.Microphone(device_index=0)
+
 
 # def record():
 #     with mic as source:
 #         audio = r.listen(source)
 #     return r.recognize_google(audio, language='fr-FR')
 
-datatxt = DataTXT(token="34f1911c254e4f8e84b4f50620f240b7")
+datatxt = DataTXT(token=os.getenv('TOKEN'))
 
 def compare(cmd:str, cmds:map):
     best_cmd = list(cmds)[0]
@@ -48,3 +53,4 @@ def listen():
 
 if __name__=="__main__":
     listen()
+    # print(os.getenv("TOKEN"))

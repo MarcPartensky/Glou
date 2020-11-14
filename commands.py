@@ -2,7 +2,6 @@
 
 from dotenv import load_dotenv
 from dandelion import DataTXT
-from recorder import record
 
 import speech_recognition as sr
 import random
@@ -13,13 +12,6 @@ load_dotenv()
 
 r = sr.Recognizer()
 mic = sr.Microphone(device_index=0)
-
-
-# def record():
-#     with mic as source:
-#         audio = r.listen(source)
-#     return r.recognize_google(audio, language='fr-FR')
-
 datatxt = DataTXT(token=os.getenv('TOKEN'))
 
 def compare(cmd:str, cmds:map):
